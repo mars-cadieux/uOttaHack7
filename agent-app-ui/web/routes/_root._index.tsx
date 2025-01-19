@@ -1,10 +1,10 @@
 import { Search } from "lucide-react";
 import { useFetch } from "@gadgetinc/react"; 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useOutletContext } from "@remix-run/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input"; 
 import { cn } from "@/lib/utils";
 import { RootOutletContext } from "../root";
 import { GradientCard } from "@/components/ui/gradient-card";
@@ -12,8 +12,13 @@ import { TextCard } from "@/components/ui/text-card";
 
 export default function() {
   const { gadgetConfig } = useOutletContext<RootOutletContext>();
+  interface Message {
+    type: 'user' | 'ai';
+    content: string;
+  }
   const [searchInput, setSearchInput] = useState("");
-  const [submittedText, setSubmittedText] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
    const [{ data, error, fetching }, sendFetch] = useFetch(
     "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535",
@@ -21,15 +26,27 @@ export default function() {
 
   // Trigger API call when `submittedText` changes
   useEffect(() => {
-    if (submittedText) {
+    if (messages.length > 0 && messages[messages.length - 1].type === 'user') {
       void sendFetch();
     }
-  }, [submittedText]);
+  }, [messages]);
 
-  
+  useEffect(() => {
+    if (data && !fetching) {
+      setMessages(prev => [...prev, {
+        type: 'ai',
+        content: `${data.title} by ${data.artistDisplayName}, ${data.objectDate}`
+      }]);
+    }
+  }, [data, fetching]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   const handleSearch = async () => {
     if (searchInput.trim()) {
-      setSubmittedText(searchInput.trim());
+      setMessages(prev => [...prev, { type: 'user', content: searchInput.trim() }]);
       setSearchInput("");
     }
   };
@@ -45,37 +62,30 @@ export default function() {
             What kind of agent would you <br /> like to speak to today?
           </CardTitle>
         </CardHeader>
-        
-        <CardContent className="flex flex-col space-y-8 min-h-[300px] p-6 rounded-lg shadow-md">
-        
-           
-          {submittedText && (
-      <>
-            <div className="flex justify-end w-full">
-              <GradientCard className="space-y-2">
-                <p>{submittedText}</p>
-              </GradientCard>
-            </div>
-
-
-                    {/* Display Fetched Data */}
-              {fetching && (
-                <div className="text-center">Loading artwork details...</div>
-              )}
-              {data && !fetching && (
+        <CardContent className="flex flex-col space-y-4 min-h-[300px] max-h-[500px] p-6 rounded-lg shadow-md overflow-y-auto">
+          {messages.map((message, index) => (
+            <div key={index} className={`flex w-full ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              {message.type === 'user' ? (
+                <GradientCard className="space-y-2">
+                  <p>{message.content}</p>
+                </GradientCard>
+              ) : (
                 <TextCard className="space-y-1">
-                  <h2 className="text-xl font-semibold">{data.title}</h2>
-                  <p>{data.artistDisplayName}, {data.objectDate}</p>
+                  <p>{message.content}</p>
                 </TextCard>
               )}
-              {error && (
-                <div className="text-red-500">
-                  Error loading artwork: {error.toString()}
-                </div>
-              )}
-        
-      </>
+            </div>
+          ))}
+          {fetching && (
+            <div className="text-center">Loading response...</div>
           )}
+          {error && (
+            <div className="text-red-500">
+              Error: {error.toString()}
+            </div>
+          )}
+          <div ref={messagesEndRef} />
         </CardContent>
         <div className="relative w-full">
           <Input
