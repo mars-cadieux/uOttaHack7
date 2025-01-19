@@ -2,8 +2,8 @@ import serpapi
 
 params = {
   "engine": "google",
-  "q": "Free weather API",
-  "api_key": "YOUR KEY HERE"
+  "q": "Free news summary API or Python library",
+  "api_key": "YOUR_KEY_HERE"
 }
 
 results = []
