@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/d273d94cf2a54728bd470dfd51f5027f/artifacts
+end_time: 1737299806373
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d273d94cf2a54728bd470dfd51f5027f
+run_name: unique-stag-146
+run_uuid: d273d94cf2a54728bd470dfd51f5027f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737299801496
+status: 3
+tags: []
+user_id: mashhood

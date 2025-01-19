@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/f9abb50065cf484bafcabfb5049256bf/artifacts
+end_time: 1737300284861
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f9abb50065cf484bafcabfb5049256bf
+run_name: invincible-zebra-210
+run_uuid: f9abb50065cf484bafcabfb5049256bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737300280333
+status: 3
+tags: []
+user_id: mashhood
