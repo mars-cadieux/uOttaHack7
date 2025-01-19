@@ -9,7 +9,15 @@ import one_shot_example
 nest_asyncio.apply()
 
 model = GroqModel('llama-3.1-70b-versatile', api_key='YOUR KEY HERE')
-agent = Agent(model, system_prompt='Be a helpful agent.',)
+agent = Agent(model, system_prompt='Be a helpful agent.')
+
+USER_PROMPT = """
+The provided 'retrieve_markdown' tool returns documation for the task you specify.
+Make use of this tool to obtain an API or library for getting country-specific university data and write some functions using it.
+AFTER CALLING 'retrieve_markdown':
+It us up to you how many functions there should be, but they should serve a single and specific purpose. 
+Make sure to follow these instructions:\n'
+""" + one_shot_example.INSTRUCTIONS
 
 async def main():
     result = agent.run_sync(USER_PROMPT)
