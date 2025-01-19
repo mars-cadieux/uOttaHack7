@@ -45,7 +45,7 @@ class NewAgent(mlflow.pyfunc.ChatModel):
         self.functions = functions
 
     def predict(self, context, messages: list[ChatMessage], params: ChatParams):
-        client = OpenAI(api_key="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",
+        client = OpenAI(api_key="",
                         base_url="https://api.groq.com/openai/v1")
 
         messages = [m.to_dict() for m in messages]
