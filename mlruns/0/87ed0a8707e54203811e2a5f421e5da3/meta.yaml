@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/87ed0a8707e54203811e2a5f421e5da3/artifacts
+end_time: 1737287383464
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 87ed0a8707e54203811e2a5f421e5da3
+run_name: rogue-hog-506
+run_uuid: 87ed0a8707e54203811e2a5f421e5da3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737287382928
+status: 4
+tags: []
+user_id: mashhood

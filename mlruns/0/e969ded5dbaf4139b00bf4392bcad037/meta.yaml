@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/e969ded5dbaf4139b00bf4392bcad037/artifacts
+end_time: 1737282261866
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e969ded5dbaf4139b00bf4392bcad037
+run_name: thoughtful-dog-246
+run_uuid: e969ded5dbaf4139b00bf4392bcad037
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737282261848
+status: 4
+tags: []
+user_id: mashhood

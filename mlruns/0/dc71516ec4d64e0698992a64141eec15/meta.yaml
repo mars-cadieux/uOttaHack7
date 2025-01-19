@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/dc71516ec4d64e0698992a64141eec15/artifacts
+end_time: 1737294420405
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dc71516ec4d64e0698992a64141eec15
+run_name: rumbling-elk-867
+run_uuid: dc71516ec4d64e0698992a64141eec15
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737294419300
+status: 4
+tags: []
+user_id: mashhood

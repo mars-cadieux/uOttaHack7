@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/c154f7bd4fb6440ea04288cc2b9255ab/artifacts
+end_time: 1737294662933
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c154f7bd4fb6440ea04288cc2b9255ab
+run_name: peaceful-crow-466
+run_uuid: c154f7bd4fb6440ea04288cc2b9255ab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737294662110
+status: 4
+tags: []
+user_id: mashhood

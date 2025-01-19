@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/dc7888e84a3a45a1a3ccbc3e7d32860c/artifacts
+end_time: 1737294630114
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dc7888e84a3a45a1a3ccbc3e7d32860c
+run_name: redolent-hog-571
+run_uuid: dc7888e84a3a45a1a3ccbc3e7d32860c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737294629354
+status: 4
+tags: []
+user_id: mashhood

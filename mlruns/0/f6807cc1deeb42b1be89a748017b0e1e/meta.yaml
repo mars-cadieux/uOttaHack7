@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/f6807cc1deeb42b1be89a748017b0e1e/artifacts
+end_time: 1737282932964
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f6807cc1deeb42b1be89a748017b0e1e
+run_name: crawling-whale-620
+run_uuid: f6807cc1deeb42b1be89a748017b0e1e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737282932839
+status: 4
+tags: []
+user_id: mashhood

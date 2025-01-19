@@ -1,21 +1,21 @@
 import re
 
-def parsePython(file_path):
+def parseModelTools(file_content):
     packagesToImport = []
     memberFunctions = []
-    with open(file_path, 'r') as file:
-        file_content = file.read()
-        pattern = re.compile(r'(?<=#\$START\$)(.*?)(?=^#\$END\$)', re.MULTILINE | re.DOTALL)
-        match = pattern.search(file_content)
-        if match:
-            imports = match.group(1).split('\n')
-            for imp in imports:
-                    if len(imp) > 0:
-                        packagesToImport.append(imp.split(' ')[1].strip())
+    pattern = re.compile(r'(?<=#\$START\$)(.*?)(?=^#\$END\$)', re.MULTILINE | re.DOTALL)
+    match = pattern.search(file_content)
+    if match:
+        imports = match.group(1).split('\n')
+        for imp in imports:
+                if len(imp) > 0:
+                    lib_name = imp.split(' ')[1].split('.')[0]
+                    if lib_name not in packagesToImport:
+                        packagesToImport.append(lib_name)
 
-        pattern = r"def\s+(\w+)\(.*?\):.*?\"\"\"(.*?)\"\"\""
-        matches = re.findall(pattern, file_content, re.MULTILINE | re.DOTALL)
-        memberFunctions = [{"function_name": match[0], "description": match[1].strip()} for match in matches]
+    pattern = r"def\s+(\w+)\(.*?\):.*?\"\"\"(.*?)\"\"\""
+    matches = re.findall(pattern, file_content, re.MULTILINE | re.DOTALL)
+    memberFunctions = [{"function_name": match[0], "description": match[1].strip()} for match in matches]
     return (packagesToImport, memberFunctions)
     
-# print(parsePython("sample.py"))
+# print(parsePython("demo.py"))

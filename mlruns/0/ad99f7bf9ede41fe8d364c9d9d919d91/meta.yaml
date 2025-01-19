@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/ad99f7bf9ede41fe8d364c9d9d919d91/artifacts
+end_time: 1737286682844
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ad99f7bf9ede41fe8d364c9d9d919d91
+run_name: gentle-croc-808
+run_uuid: ad99f7bf9ede41fe8d364c9d9d919d91
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737286678931
+status: 3
+tags: []
+user_id: mashhood

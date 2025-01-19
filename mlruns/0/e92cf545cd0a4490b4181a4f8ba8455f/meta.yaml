@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/e92cf545cd0a4490b4181a4f8ba8455f/artifacts
+end_time: 1737284526640
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e92cf545cd0a4490b4181a4f8ba8455f
+run_name: charming-bat-369
+run_uuid: e92cf545cd0a4490b4181a4f8ba8455f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737284526510
+status: 4
+tags: []
+user_id: mashhood

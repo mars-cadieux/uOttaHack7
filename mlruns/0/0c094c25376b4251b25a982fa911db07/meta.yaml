@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/0c094c25376b4251b25a982fa911db07/artifacts
+end_time: 1737290181307
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0c094c25376b4251b25a982fa911db07
+run_name: bouncy-sow-897
+run_uuid: 0c094c25376b4251b25a982fa911db07
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737290180347
+status: 4
+tags: []
+user_id: mashhood
