@@ -176,7 +176,7 @@ async def main():
 
     # response = tool_model.predict({"messages": messages})
     # print(response["choices"][0]["message"]["content"])
-    # os.system(f"export OPENAI_API_KEY=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")
+    # os.system(f"export OPENAI_API_KEY=")
     # os.system(f"mlflow models serve -m {modeul_uri}")
 
     # sleep(5)
