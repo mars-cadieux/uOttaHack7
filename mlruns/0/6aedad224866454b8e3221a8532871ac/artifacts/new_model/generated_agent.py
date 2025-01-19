@@ -48,60 +48,59 @@ class NewAgent(mlflow.pyfunc.ChatModel):
                 tool_response = ChatMessage(
                     role="tool", content=str(content), tool_call_id=tool_call.id
                 ).to_dict()
-                # print(tool_response['content'])
-                # response = {}
-                # response['content'] = tool_response['content']
-                # response['choices'] = [{'message':{}}]
-                # response['choices'][0]['message']['content'] = tool_response['content']
-                # response['choices'][0]['message']['role'] = "assistant"
-        response = client.chat.completions.create(
-            model=MODEL,
-            messages=messages,
-            # tools=self.tools,
-        )
+                print(tool_response["content"])
+                response = {}
+                response["content"] = tool_response["content"]
+                response["choices"] = [{"message": {}}]
+                response["choices"][0]["message"]["content"] = tool_response["content"]
+                response["choices"][0]["message"]["role"] = "assistant"
+        # response = client.chat.completions.create(
+        #     model=MODEL,
+        #     messages=messages,
+        #     tools=self.tools,
+        # )
 
         return ChatCompletionResponse.from_dict(response)
 
     def get_random_cat_fact(self):
         """
-        This function takes no input and returns a single random cat fact.
+        This function returns a single random cat fact.
 
         Returns:
-        dict: A dictionary containing a single random cat fact.
+        dict: A dictionary containing the random cat fact.
         """
         url = "https://catfact.ninja/fact"
         response = requests.get(url)
-        data = response.json()
-        return data
+        return response.json()
 
-    def get_multiple_random_cat_facts(self, limit):
+    def get_multiple_random_cat_facts(self, limit=1):
         """
-        This function takes the limit as input and returns multiple random cat facts.
+        This function returns multiple random cat facts.
 
         Parameters:
         limit (int): The number of facts to return. Defaults to 1, max is 500.
 
         Returns:
-        dict: A dictionary containing multiple random cat facts.
+        dict: A dictionary containing the multiple random cat facts.
         """
         url = f"https://catfact.ninja/facts?limit={limit}"
         response = requests.get(url)
-        data = response.json()
-        return data
+        return response.json()
 
     def get_cat_facts_with_limit(self, limit):
         """
-        This function takes the limit as input and returns multiple random cat facts with the specified limit.
+        This function returns cat facts with a specified limit.
 
         Parameters:
-        limit (int): The number of facts to return. Defaults to 1, max is 500.
+        limit (int): The number of facts to return. Must be between 1 and 500.
 
         Returns:
-        dict: A dictionary containing multiple random cat facts with the specified limit.
+        dict: A dictionary containing the cat facts with the specified limit.
         """
+        if not 1 <= limit <= 500:
+            raise ValueError("Limit must be between 1 and 500")
         url = f"https://catfact.ninja/facts?limit={limit}"
         response = requests.get(url)
-        data = response.json()
-        return data
+        return response.json()
 
-set_model(NewAgent([{'function': {'name': 'get_random_cat_fact', 'description': 'This function takes no input and returns a single random cat fact.\n    \n    Returns:\n    dict: A dictionary containing a single random cat fact.', 'parameters': {'properties': {}, 'type': 'object'}, 'strict': True}, 'type': 'function'}, {'function': {'name': 'get_multiple_random_cat_facts', 'description': 'This function takes the limit as input and returns multiple random cat facts.\n    \n    ', 'parameters': {'properties': {'limit': {'type': 'integer', 'description': 'The number of facts to return. Defaults to 1, max is 500.'}}, 'type': 'object'}, 'strict': True}, 'type': 'function'}, {'function': {'name': 'get_cat_facts_with_limit', 'description': 'This function takes the limit as input and returns multiple random cat facts with the specified limit.\n    \n    ', 'parameters': {'properties': {'limit': {'type': 'integer', 'description': 'The number of facts to return. Defaults to 1, max is 500.'}}, 'type': 'object'}, 'strict': True}, 'type': 'function'}], ['get_random_cat_fact', 'get_multiple_random_cat_facts', 'get_cat_facts_with_limit']))
+set_model(NewAgent([{'function': {'name': 'get_random_cat_fact', 'description': 'This function returns a single random cat fact.\n    \n    Returns:\n    dict: A dictionary containing the random cat fact.', 'parameters': {'properties': {}, 'type': 'object'}, 'strict': True}, 'type': 'function'}, {'function': {'name': 'get_multiple_random_cat_facts', 'description': 'This function returns multiple random cat facts.\n    \n    ', 'parameters': {'properties': {'limit': {'type': 'integer', 'description': 'The number of facts to return. Defaults to 1, max is 500.'}}, 'type': 'object'}, 'strict': True}, 'type': 'function'}, {'function': {'name': 'get_cat_facts_with_limit', 'description': 'This function returns cat facts with a specified limit.\n    \n    ', 'parameters': {'properties': {'limit': {'type': 'integer', 'description': 'The number of facts to return. Must be between 1 and 500.'}}, 'type': 'object'}, 'strict': True}, 'type': 'function'}], ['get_random_cat_fact', 'get_multiple_random_cat_facts', 'get_cat_facts_with_limit']))

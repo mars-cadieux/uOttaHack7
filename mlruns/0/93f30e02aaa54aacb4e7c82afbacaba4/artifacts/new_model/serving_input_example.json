@@ -1,0 +1,12 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "Please use the provided tools to answer user queries."
+    },
+    {
+      "role": "user",
+      "content": "Give me a random cat fact"
+    }
+  ]
+}

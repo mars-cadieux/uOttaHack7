@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/d0e8d28e120e4390b5939150276e1332/artifacts
+end_time: 1737303190312
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d0e8d28e120e4390b5939150276e1332
+run_name: melodic-sloth-111
+run_uuid: d0e8d28e120e4390b5939150276e1332
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737303189661
+status: 4
+tags: []
+user_id: mashhood

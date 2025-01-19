@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/2a925c41fb30405b8f2247a9f2d4655f/artifacts
+end_time: 1737303842395
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2a925c41fb30405b8f2247a9f2d4655f
+run_name: glamorous-gull-357
+run_uuid: 2a925c41fb30405b8f2247a9f2d4655f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737303841786
+status: 4
+tags: []
+user_id: mashhood
