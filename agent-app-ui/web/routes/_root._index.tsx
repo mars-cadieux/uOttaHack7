@@ -1,26 +1,35 @@
-import { useFetch } from "@gadgetinc/react"; 
 import { Search } from "lucide-react";
-import { useState } from "react";
+import { useFetch } from "@gadgetinc/react"; 
+import { useState, useEffect } from "react";
 import { useOutletContext } from "@remix-run/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { RootOutletContext } from "../root";
+import { GradientCard } from "@/components/ui/gradient-card";
+import { TextCard } from "@/components/ui/text-card";
 
 export default function() {
   const { gadgetConfig } = useOutletContext<RootOutletContext>();
   const [searchInput, setSearchInput] = useState("");
-  const [hasSearched, setHasSearched] = useState(false);
-  
-  const [{ data, error, fetching }, sendFetch] = useFetch(
+  const [submittedText, setSubmittedText] = useState("");
+
+   const [{ data, error, fetching }, sendFetch] = useFetch(
     "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535",
     { json: true, sendImmediately: false });
+
+  // Trigger API call when `submittedText` changes
+  useEffect(() => {
+    if (submittedText) {
+      void sendFetch();
+    }
+  }, [submittedText]);
+
   
   const handleSearch = async () => {
     if (searchInput.trim()) {
-      setHasSearched(true);
-      await sendFetch();
+      setSubmittedText(searchInput.trim());
       setSearchInput("");
     }
   };
@@ -38,39 +47,40 @@ export default function() {
         </CardHeader>
         
         <CardContent className="flex flex-col space-y-8 min-h-[300px] p-6 rounded-lg shadow-md">
-          {!hasSearched && (
-            <div className="text-center text-gray-500">
-              
-            </div>
-          )}
-          
-          {hasSearched && (
+        
            
-            <>
+          {submittedText && (
+      <>
+            <div className="flex justify-end w-full">
+              <GradientCard className="space-y-2">
+                <p>{submittedText}</p>
+              </GradientCard>
+            </div>
+
+
+                    {/* Display Fetched Data */}
               {fetching && (
-              
                 <div className="text-center">Loading artwork details...</div>
-                  )}
+              )}
               {data && !fetching && (
-                <div className="space-y-4 bg-gradient-to-r from-[#f7dd88] to-[#ac45ff] px-6 pt-6 pb-8 rounded-tl-[36px] rounded-tr-[6px] rounded-bl-[36px] rounded-br-[36px] text-black">
+                <TextCard className="space-y-1">
                   <h2 className="text-xl font-semibold">{data.title}</h2>
                   <p>{data.artistDisplayName}, {data.objectDate}</p>
-                </div>
-              
+                </TextCard>
               )}
-
               {error && (
-                <div className="text-red-500">Error loading artwork: {error.toString()}</div>
+                <div className="text-red-500">
+                  Error loading artwork: {error.toString()}
+                </div>
               )}
-            </>
+        
+      </>
           )}
-          
         </CardContent>
         <div className="relative w-full">
           <Input
             placeholder="Search for an agent..."
             className="mt-auto h-14 rounded-full border-[#7d7d7d] placeholder:text-gray-500 px-6 pr-14"
-            disabled={fetching}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
