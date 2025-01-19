@@ -47,7 +47,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body >
         <Suspense>
           <GadgetProvider api={api}>
             <Outlet context={{ gadgetConfig, csrfToken }} />

@@ -16,7 +16,8 @@ export default function () {
   const context = useOutletContext();
 
   return (
-    <div className="w-screen h-screen grid place-items-center">
+ 
+    <div className="w-full flex flex-col relative">
       <Outlet context={context} />
     </div>
   );
