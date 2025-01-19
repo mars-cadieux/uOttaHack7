@@ -18,9 +18,11 @@ export default function() {
   }
   const [searchInput, setSearchInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isSecondInput, setSecondInput] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+ 
 
-   const [{ data, error, fetching }, sendFetch] = useFetch(
+  const [{ data, error, fetching }, sendFetch] = useFetch(
     "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535",
     { json: true, sendImmediately: false });
 
@@ -43,29 +45,35 @@ export default function() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
+  
+   
+    
   const handleSearch = async () => {
     if (searchInput.trim()) {
+      // Add the user message to chat
       setMessages(prev => [...prev, { type: 'user', content: searchInput.trim() }]);
+      
+      // Handle input sequence tracking
+      if (isSecondInput) {
+        setSecondInput(false);
+        console.log('SECOND');
+      }
+      setSecondInput(!isSecondInput);
       setSearchInput("");
     }
   };
 
   return (
-    <div className="relative flex w-full max-w-4xl">
-      
-      <Card className={cn(
-        "flex-1 p-6 transition-all duration-300 border-none shadow-lg",
+    <div className="flex flex-col items-center justify-center bg-[#a6c6ff]">
+      <div className={cn(
+        "flex-1 w-1/2 p-6 border-none bg-[#ffaca6]",
       )}>
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-[#f7dd88] to-[#ac45ff] bg-clip-text text-transparent">
-            What kind of agent would you <br /> like to speak to today?
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col space-y-4 min-h-[300px] max-h-[500px] p-6 rounded-lg shadow-md overflow-y-auto">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-[#f7dd88] to-[#ac45ff] bg-clip-text text-transparent">
+          What kind of agent would you <br /> like to speak to today?
+        </h2>
+        <div className="content flex flex-col space-y-4 p-6 rounded-lg shadow-md bg-[#fca6ff]">
           {messages.map((message, index) => (
-            <div key={index} className={`flex w-full ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
+            <div key={index} className={`bg-[#b0ab5f] flex w-full ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}> 
               {message.type === 'user' ? (
                 <GradientCard className="space-y-2">
                   <p>{message.content}</p>
@@ -85,12 +93,16 @@ export default function() {
               Error: {error.toString()}
             </div>
           )}
-          <div ref={messagesEndRef} />
-        </CardContent>
-        <div className="relative w-full">
+          <div ref={messagesEndRef} className="bg-[#66b05f]"/>
+        </div>
+      </div>
+
+      <div
+        className="fixed pt-3 px-60 pb-7 bottom-0 left-0 right-0 w-full bg-[#030711]">
+        <div className="relative">
           <Input
             placeholder="Search for an agent..."
-            className="mt-auto h-14 rounded-full border-[#7d7d7d] placeholder:text-gray-500 px-6 pr-14"
+            className=" h-14 rounded-full bg-[#030711] border-gray-500 placeholder:text-gray-500 px-6 pr-14"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -106,7 +118,7 @@ export default function() {
               onClick={() => void handleSearch()}><Search className="h-4 w-4" /></Button>
           )}
         </div>
-      </Card>
+        </div>
     </div>
   );
 }
