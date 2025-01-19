@@ -37,7 +37,7 @@ def fix_python_indentation(python_string):
 nest_asyncio.apply()
 
 agent_class = """\n\n
-MODEL = "mixtral-8x7b-32768"
+MODEL = "gemma2-9b-it"
 
 class NewAgent(mlflow.pyfunc.ChatModel):
     def __init__(self, tools, functions):
@@ -45,7 +45,7 @@ class NewAgent(mlflow.pyfunc.ChatModel):
         self.functions = functions
 
     def predict(self, context, messages: list[ChatMessage], params: ChatParams):
-        client = OpenAI(api_key="ENTER_KEY_HERE",
+        client = OpenAI(api_key="YOUR_KEY_HERE",
                         base_url="https://api.groq.com/openai/v1")
 
         messages = [m.to_dict() for m in messages]
@@ -72,6 +72,7 @@ class NewAgent(mlflow.pyfunc.ChatModel):
                 tool_response = ChatMessage(
                     role="tool", content=str(content), tool_call_id=tool_call.id
                 ).to_dict()
+                print(tool_response['content'])
                 response = {}
                 response['content'] = tool_response['content']
                 response['choices'] = [{'message':{}}]
@@ -89,7 +90,7 @@ class NewAgent(mlflow.pyfunc.ChatModel):
 
 
 async def main():
-    modelResponse = await createPythonTools("https://github.com/15Dkatz/official_joke_api")
+    modelResponse = await createPythonTools("https://open-meteo.com")
     libList, functionsList = parseModelTools(modelResponse)
     type_conversion = {'str': 'string', 'float': 'number', 'int': 'integer', 
                        'obj': 'object', 'arr': 'array', 'bool': 'boolean'}
@@ -149,7 +150,7 @@ async def main():
     }
     messages = [
         system_prompt,
-        {"role": "user", "content": "Tell a random joke"},
+        {"role": "user", "content": "Tell me the weather in Ottawa right now"},
     ]
     input_example = {
         "messages": messages,
@@ -168,8 +169,8 @@ async def main():
 
     # response = tool_model.predict({"messages": messages})
     # print(response["choices"][0]["message"]["content"])
-    os.system(f"export OPENAI_API_KEY=ENTER_KEY_HERE")
-    os.system(f"mlflow models serve -m {modeul_uri}")
+    # os.system(f"export OPENAI_API_KEY=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")
+    # os.system(f"mlflow models serve -m {modeul_uri}")
 
     # sleep(5)
     # messages = [

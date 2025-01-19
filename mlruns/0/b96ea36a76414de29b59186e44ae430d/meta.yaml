@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/b96ea36a76414de29b59186e44ae430d/artifacts
+end_time: 1737300519886
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b96ea36a76414de29b59186e44ae430d
+run_name: defiant-fly-19
+run_uuid: b96ea36a76414de29b59186e44ae430d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737300515459
+status: 3
+tags: []
+user_id: mashhood
