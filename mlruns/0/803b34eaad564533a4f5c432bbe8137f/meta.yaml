@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/803b34eaad564533a4f5c432bbe8137f/artifacts
+end_time: 1737292700361
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 803b34eaad564533a4f5c432bbe8137f
+run_name: nimble-snail-207
+run_uuid: 803b34eaad564533a4f5c432bbe8137f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737292699288
+status: 4
+tags: []
+user_id: mashhood

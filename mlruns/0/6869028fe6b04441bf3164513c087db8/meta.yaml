@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/6869028fe6b04441bf3164513c087db8/artifacts
+end_time: 1737289129270
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6869028fe6b04441bf3164513c087db8
+run_name: chill-toad-661
+run_uuid: 6869028fe6b04441bf3164513c087db8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737289128552
+status: 4
+tags: []
+user_id: mashhood

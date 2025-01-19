@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/4df064cc146d49359b963eb55d5b8175/artifacts
+end_time: 1737285151786
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4df064cc146d49359b963eb55d5b8175
+run_name: stylish-ram-164
+run_uuid: 4df064cc146d49359b963eb55d5b8175
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737285151768
+status: 4
+tags: []
+user_id: mashhood

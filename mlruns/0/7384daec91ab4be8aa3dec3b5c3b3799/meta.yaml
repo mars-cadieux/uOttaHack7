@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/7384daec91ab4be8aa3dec3b5c3b3799/artifacts
+end_time: 1737286578517
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7384daec91ab4be8aa3dec3b5c3b3799
+run_name: overjoyed-duck-183
+run_uuid: 7384daec91ab4be8aa3dec3b5c3b3799
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737286574386
+status: 3
+tags: []
+user_id: mashhood

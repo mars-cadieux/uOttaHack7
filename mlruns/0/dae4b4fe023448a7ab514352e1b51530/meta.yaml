@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/dae4b4fe023448a7ab514352e1b51530/artifacts
+end_time: 1737284019623
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dae4b4fe023448a7ab514352e1b51530
+run_name: abundant-ray-819
+run_uuid: dae4b4fe023448a7ab514352e1b51530
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737284019466
+status: 4
+tags: []
+user_id: mashhood

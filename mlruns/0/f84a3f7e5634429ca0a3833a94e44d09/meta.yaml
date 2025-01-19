@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/f84a3f7e5634429ca0a3833a94e44d09/artifacts
+end_time: 1737291300526
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f84a3f7e5634429ca0a3833a94e44d09
+run_name: colorful-roo-714
+run_uuid: f84a3f7e5634429ca0a3833a94e44d09
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737291299677
+status: 4
+tags: []
+user_id: mashhood

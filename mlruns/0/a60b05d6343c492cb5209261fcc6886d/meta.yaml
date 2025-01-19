@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/a60b05d6343c492cb5209261fcc6886d/artifacts
+end_time: 1737293414083
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a60b05d6343c492cb5209261fcc6886d
+run_name: abrasive-vole-929
+run_uuid: a60b05d6343c492cb5209261fcc6886d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737293412935
+status: 4
+tags: []
+user_id: mashhood

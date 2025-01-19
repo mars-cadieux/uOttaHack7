@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/c0714963f34945469b5737add4484fa5/artifacts
+end_time: 1737292758208
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c0714963f34945469b5737add4484fa5
+run_name: intelligent-gnu-254
+run_uuid: c0714963f34945469b5737add4484fa5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737292757152
+status: 4
+tags: []
+user_id: mashhood

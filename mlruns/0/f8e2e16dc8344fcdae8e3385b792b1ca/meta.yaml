@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/f8e2e16dc8344fcdae8e3385b792b1ca/artifacts
+end_time: 1737283878984
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f8e2e16dc8344fcdae8e3385b792b1ca
+run_name: victorious-fish-406
+run_uuid: f8e2e16dc8344fcdae8e3385b792b1ca
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737283878818
+status: 4
+tags: []
+user_id: mashhood

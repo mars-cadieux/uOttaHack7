@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/1355f16da8f34914a7dd86a0b1ab2f9f/artifacts
+end_time: 1737281158938
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1355f16da8f34914a7dd86a0b1ab2f9f
+run_name: nervous-pig-818
+run_uuid: 1355f16da8f34914a7dd86a0b1ab2f9f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737281158933
+status: 4
+tags: []
+user_id: mashhood

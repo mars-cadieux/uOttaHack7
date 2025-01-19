@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/a7332bf9b28f4e2ca76fe8a9e1e5c793/artifacts
+end_time: 1737285175228
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a7332bf9b28f4e2ca76fe8a9e1e5c793
+run_name: selective-snake-455
+run_uuid: a7332bf9b28f4e2ca76fe8a9e1e5c793
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737285175212
+status: 4
+tags: []
+user_id: mashhood
