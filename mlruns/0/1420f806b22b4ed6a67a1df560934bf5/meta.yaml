@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/1420f806b22b4ed6a67a1df560934bf5/artifacts
+end_time: 1737284665662
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1420f806b22b4ed6a67a1df560934bf5
+run_name: peaceful-worm-680
+run_uuid: 1420f806b22b4ed6a67a1df560934bf5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737284665647
+status: 4
+tags: []
+user_id: mashhood

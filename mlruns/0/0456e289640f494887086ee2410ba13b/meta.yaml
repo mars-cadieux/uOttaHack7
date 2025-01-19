@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/0456e289640f494887086ee2410ba13b/artifacts
+end_time: 1737285106206
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0456e289640f494887086ee2410ba13b
+run_name: skillful-koi-324
+run_uuid: 0456e289640f494887086ee2410ba13b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737285106191
+status: 4
+tags: []
+user_id: mashhood

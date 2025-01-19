@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/45b55ab6fd0b44cab1ccbd60429900ea/artifacts
+end_time: 1737292459430
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 45b55ab6fd0b44cab1ccbd60429900ea
+run_name: casual-shark-150
+run_uuid: 45b55ab6fd0b44cab1ccbd60429900ea
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737292458663
+status: 4
+tags: []
+user_id: mashhood

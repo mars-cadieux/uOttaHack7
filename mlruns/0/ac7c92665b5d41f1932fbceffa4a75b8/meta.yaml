@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/ac7c92665b5d41f1932fbceffa4a75b8/artifacts
+end_time: 1737288134128
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ac7c92665b5d41f1932fbceffa4a75b8
+run_name: traveling-steed-440
+run_uuid: ac7c92665b5d41f1932fbceffa4a75b8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737288133583
+status: 4
+tags: []
+user_id: mashhood

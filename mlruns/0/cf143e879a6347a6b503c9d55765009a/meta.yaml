@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/cf143e879a6347a6b503c9d55765009a/artifacts
+end_time: 1737290677227
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cf143e879a6347a6b503c9d55765009a
+run_name: abundant-chimp-426
+run_uuid: cf143e879a6347a6b503c9d55765009a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737290676574
+status: 4
+tags: []
+user_id: mashhood

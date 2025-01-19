@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/12d2dc9389c94439a62d00fdb79baf53/artifacts
+end_time: 1737285189999
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 12d2dc9389c94439a62d00fdb79baf53
+run_name: angry-dog-146
+run_uuid: 12d2dc9389c94439a62d00fdb79baf53
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737285189963
+status: 4
+tags: []
+user_id: mashhood

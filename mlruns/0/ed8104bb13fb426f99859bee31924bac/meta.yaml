@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/ed8104bb13fb426f99859bee31924bac/artifacts
+end_time: 1737290074724
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ed8104bb13fb426f99859bee31924bac
+run_name: beautiful-mule-480
+run_uuid: ed8104bb13fb426f99859bee31924bac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737290073888
+status: 4
+tags: []
+user_id: mashhood

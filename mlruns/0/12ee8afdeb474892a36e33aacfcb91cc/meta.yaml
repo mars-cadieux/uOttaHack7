@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/12ee8afdeb474892a36e33aacfcb91cc/artifacts
+end_time: 1737294156372
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 12ee8afdeb474892a36e33aacfcb91cc
+run_name: funny-fox-235
+run_uuid: 12ee8afdeb474892a36e33aacfcb91cc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737294155428
+status: 4
+tags: []
+user_id: mashhood

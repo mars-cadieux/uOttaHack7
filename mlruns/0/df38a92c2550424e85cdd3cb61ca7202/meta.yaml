@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/df38a92c2550424e85cdd3cb61ca7202/artifacts
+end_time: 1737286007757
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: df38a92c2550424e85cdd3cb61ca7202
+run_name: adaptable-skunk-901
+run_uuid: df38a92c2550424e85cdd3cb61ca7202
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737286006512
+status: 4
+tags: []
+user_id: mashhood

@@ -6,22 +6,17 @@ from typing import List
 from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode
 from crawl4ai.extraction_strategy import LLMExtractionStrategy
 
-class Product(BaseModel):
-    name: str
-    price: str
-
 async def CrawlExtract(base_url: str):
     llm_strategy = LLMExtractionStrategy(
         provider="groq/llama3-70b-8192",           
-        api_token="YOUR_KEY_HERE",
-        # schema=Product.model_json_schema(),           
+        api_token="ENTER_KEY_HERE",          
         extraction_type="schema",
         instruction="Extract all information relevant to utilizing the API or library in Python",
         chunk_token_threshold=1000,
         overlap_rate=0.0,
         apply_chunking=True,
         input_format="markdown",   
-        extra_args={"temperature": 0.0, "max_tokens": 4000}
+        extra_args={"temperature": 0.0, "max_tokens": 1000}
     )
 
     crawl_config = CrawlerRunConfig(
@@ -42,7 +37,7 @@ async def CrawlExtract(base_url: str):
             return str(result.extracted_content)
 
         else:
-            print("Error. No data found.")
+            print("No data found")
 
-if __name__ == "__main__":
-    asyncio.run(CrawlExtract("https://www.newscatcherapi.com/blog/top-4-free-and-open-ource-news-api-alternatives"))
+# if __name__ == "__main__":
+#     asyncio.run(CrawlExtract("https://www.newscatcherapi.com/blog/top-4-free-and-open-ource-news-api-alternatives"))
