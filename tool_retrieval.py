@@ -10,7 +10,7 @@ from llm_crawler import CrawlExtract
 nest_asyncio.apply()
 
 MODEL = 'llama3-70b-8192'
-client = OpenAI(api_key="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",
+client = OpenAI(api_key="",
                         base_url="https://api.groq.com/openai/v1")
 
 USER_PROMPT = """
