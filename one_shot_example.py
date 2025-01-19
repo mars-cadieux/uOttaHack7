@@ -118,6 +118,7 @@ import requests
 import json
 #$END$
 
+### \"""Gets the current weather for a given location.\"""
 def get_current_weather(latitude, longitude):
     \"""
     This function takes the latitude and longitude of a location as input and returns the current weather.
@@ -134,6 +135,7 @@ def get_current_weather(latitude, longitude):
     data = json.loads(response.text)
     return data["current_weather"]
 
+### \"""Gets the hourly forecast for a given location.\"""
 def get_hourly_forecast(latitude, longitude):
     \"""
     This function takes the latitude and longitude of a location as input and returns the hourly forecast.
@@ -150,6 +152,7 @@ def get_hourly_forecast(latitude, longitude):
     data = json.loads(response.text)
     return data["hourly"]
 
+### \"""Gets the historical weather data for a given location and date.\"""
 def get_historical_weather(latitude, longitude, date):
     \"""
     This function takes the latitude, longitude, and date as input and returns the historical weather data.
@@ -168,7 +171,8 @@ def get_historical_weather(latitude, longitude, date):
     return data["hourly"]
 """
 
-INSTRUCTIONS = """-Your functions must be based around the API/Library returned by the provided tool
+INSTRUCTIONS = """
+-Your functions must be based around the API/Library returned by the provided tool
 -After 'REASONING:' provide your reasoning for why you chose to break down your response
 into the functions you did and how they meet the requirement of being modular  
 -Everything after 'CODE:' should be an executable Python file, and nothing else
@@ -176,6 +180,6 @@ into the functions you did and how they meet the requirement of being modular
 -'#$START$' should come before all import statements
 -'#$END$' should come immediately after the final import statement
 -The rest of the file should be the sequence of python functions using the API/library
--Inside each function include a brief description of the function inside inside triple quotes
+-Above each function include a brief description of the function inside inside triple quotes
 -The description should go into detail about each of the inputs and the purpose of the function
 """

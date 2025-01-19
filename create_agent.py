@@ -23,6 +23,10 @@ from mlflow.models import set_model
 import black
 from black.mode import Mode
 
+from search import getSingleResult
+
+userQuery = "some cat facts"
+
 def fix_python_indentation(python_string):
     try:
         reformatted_code = black.format_str(python_string, mode=Mode())
@@ -45,7 +49,7 @@ class NewAgent(mlflow.pyfunc.ChatModel):
         self.functions = functions
 
     def predict(self, context, messages: list[ChatMessage], params: ChatParams):
-        client = OpenAI(api_key="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",
+        client = OpenAI(api_key="your key",
                         base_url="https://api.groq.com/openai/v1")
 
         messages = [m.to_dict() for m in messages]
@@ -90,7 +94,9 @@ class NewAgent(mlflow.pyfunc.ChatModel):
 
 
 async def main():
-    modelResponse = await createPythonTools("https://catfact.ninja/docs/api-docs.json")
+    searchResult = getSingleResult(userQuery)
+    print(searchResult)
+    modelResponse = await createPythonTools(searchResult)
     libList, functionsList = parseModelTools(modelResponse)
     type_conversion = {'str': 'string', 'float': 'number', 'int': 'integer', 
                        'obj': 'object', 'arr': 'array', 'bool': 'boolean'}
@@ -151,7 +157,7 @@ async def main():
     }
     messages = [
         system_prompt,
-        {"role": "user", "content": "Give me a random cat fact"},
+        {"role": "user", "content": "Tell me " + userQuery},
     ]
     input_example = {
         "messages": messages,
