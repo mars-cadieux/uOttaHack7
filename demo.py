@@ -59,3 +59,4 @@ def get_google_news_rss_data(url):
     data = json.loads(response.text)
     return data
 
+
