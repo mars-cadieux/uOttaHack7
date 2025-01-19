@@ -5,7 +5,7 @@ from pydantic_ai.models.groq import GroqModel
 import nest_asyncio
 nest_asyncio.apply()
 
-model = GroqModel('llama-3.1-70b-versatile', api_key='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')
+model = GroqModel('llama-3.1-70b-versatile', api_key='YOUR KEY HERE')
 agent = Agent(model, system_prompt='Be a helpful agent.',)
 
 async def main():
