@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/6aedad224866454b8e3221a8532871ac/artifacts
+end_time: 1737302026698
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6aedad224866454b8e3221a8532871ac
+run_name: learned-roo-673
+run_uuid: 6aedad224866454b8e3221a8532871ac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737302023081
+status: 3
+tags: []
+user_id: mashhood

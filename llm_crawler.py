@@ -9,7 +9,7 @@ from crawl4ai.extraction_strategy import LLMExtractionStrategy
 async def CrawlExtract(base_url: str):
     llm_strategy = LLMExtractionStrategy(
         provider="groq/llama3-70b-8192",           
-        api_token="YOUR_KEY_HERE",          
+        api_token="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",          
         extraction_type="schema",
         instruction="Extract all information relevant to utilizing the API or library in Python",
         chunk_token_threshold=1000,

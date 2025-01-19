@@ -45,7 +45,7 @@ class NewAgent(mlflow.pyfunc.ChatModel):
         self.functions = functions
 
     def predict(self, context, messages: list[ChatMessage], params: ChatParams):
-        client = OpenAI(api_key="YOUR_KEY_HERE",
+        client = OpenAI(api_key="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",
                         base_url="https://api.groq.com/openai/v1")
 
         messages = [m.to_dict() for m in messages]
@@ -72,17 +72,17 @@ class NewAgent(mlflow.pyfunc.ChatModel):
                 tool_response = ChatMessage(
                     role="tool", content=str(content), tool_call_id=tool_call.id
                 ).to_dict()
-                print(tool_response['content'])
-                response = {}
-                response['content'] = tool_response['content']
-                response['choices'] = [{'message':{}}]
-                response['choices'][0]['message']['content'] = tool_response['content']
-                response['choices'][0]['message']['role'] = "assistant"
-        # response = client.chat.completions.create(
-        #     model=MODEL,
-        #     messages=messages,
-        #     tools=self.tools,
-        # )
+                # print(tool_response['content'])
+                # response = {}
+                # response['content'] = tool_response['content']
+                # response['choices'] = [{'message':{}}]
+                # response['choices'][0]['message']['content'] = tool_response['content']
+                # response['choices'][0]['message']['role'] = "assistant"
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=messages,
+            tools=self.tools,
+        )
 
         return ChatCompletionResponse.from_dict(response)
 
@@ -90,7 +90,7 @@ class NewAgent(mlflow.pyfunc.ChatModel):
 
 
 async def main():
-    modelResponse = await createPythonTools("https://open-meteo.com")
+    modelResponse = await createPythonTools("https://catfact.ninja/docs/api-docs.json")
     libList, functionsList = parseModelTools(modelResponse)
     type_conversion = {'str': 'string', 'float': 'number', 'int': 'integer', 
                        'obj': 'object', 'arr': 'array', 'bool': 'boolean'}
@@ -104,6 +104,7 @@ async def main():
             desc, param_str = params_obj.split("Parameters:")
             lines = param_str.split('\n')
             for line in lines:
+                print(line)
                 if(len(line.strip().split(' ')) <= 2):
                     continue
                 word, rest = line.strip().split(' ', 1)
@@ -146,11 +147,11 @@ async def main():
                 +fix_python_indentation(combined_agent_class)+f"\nset_model(NewAgent({tools}, {functions}))")
     system_prompt = {
         "role": "system",
-        "content": "Please use the provided tools to answer user queries.",
+        "content": "Please use the provided tools to answer user queries using the provided tools. Be sure to follow the correct syntax when generating tool calls and follow the schema for input when making function calls.",
     }
     messages = [
         system_prompt,
-        {"role": "user", "content": "Tell me the weather in Ottawa right now"},
+        {"role": "user", "content": "Give me a random cat fact"},
     ]
     input_example = {
         "messages": messages,
