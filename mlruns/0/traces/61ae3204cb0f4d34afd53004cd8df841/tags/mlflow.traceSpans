@@ -1,1 +1,0 @@
-[{"name": "get_historical_weather", "type": "TOOL", "inputs": ["latitude", "longitude", "date"], "outputs": ["time", "temperature_2m", "relativehumidity_2m", "windspeed_10m"]}]

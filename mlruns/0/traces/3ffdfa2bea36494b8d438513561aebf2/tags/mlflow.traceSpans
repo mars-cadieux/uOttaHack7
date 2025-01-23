@@ -1,1 +1,0 @@
-[{"name": "get_card_info", "type": "TOOL", "inputs": ["card_id", "language"], "outputs": ["type", "title", "status", "endpoint", "method"]}]

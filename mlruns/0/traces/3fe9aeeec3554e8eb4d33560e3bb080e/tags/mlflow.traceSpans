@@ -1,1 +1,0 @@
-[{"name": "get_google_news_data", "type": "TOOL", "inputs": ["query"]}]

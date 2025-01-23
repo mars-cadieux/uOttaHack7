@@ -1,1 +1,0 @@
-[{"name": "get_spell_info", "type": "TOOL", "inputs": ["name"], "outputs": ["index", "name", "level", "url"]}]

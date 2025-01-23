@@ -1,1 +1,0 @@
-[{"name": "get_current_weather", "type": "TOOL", "inputs": ["latitude", "longitude"], "outputs": ["time", "interval", "temperature", "windspeed", "winddirection", "is_day", "weathercode"]}]

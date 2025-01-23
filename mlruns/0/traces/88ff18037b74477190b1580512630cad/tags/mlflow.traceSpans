@@ -1,1 +1,0 @@
-[{"name": "Completions", "type": "CHAT_MODEL", "inputs": ["model", "messages", "tools"], "outputs": ["id", "choices", "created", "model", "object", "service_tier", "system_fingerprint", "usage", "x_groq"]}]
