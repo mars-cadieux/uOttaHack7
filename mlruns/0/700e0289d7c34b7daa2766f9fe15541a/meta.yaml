@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/700e0289d7c34b7daa2766f9fe15541a/artifacts
+end_time: 1737523194760
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 700e0289d7c34b7daa2766f9fe15541a
+run_name: bright-shrimp-334
+run_uuid: 700e0289d7c34b7daa2766f9fe15541a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737523194100
+status: 4
+tags: []
+user_id: mashhood

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/be1afd091caa405caae3f00ca225be3f/artifacts
+end_time: 1737579258903
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: be1afd091caa405caae3f00ca225be3f
+run_name: traveling-vole-286
+run_uuid: be1afd091caa405caae3f00ca225be3f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737579254857
+status: 3
+tags: []
+user_id: mashhood

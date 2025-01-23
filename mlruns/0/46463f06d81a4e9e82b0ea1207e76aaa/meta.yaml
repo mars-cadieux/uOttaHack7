@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/46463f06d81a4e9e82b0ea1207e76aaa/artifacts
+end_time: 1737428132174
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 46463f06d81a4e9e82b0ea1207e76aaa
+run_name: worried-smelt-529
+run_uuid: 46463f06d81a4e9e82b0ea1207e76aaa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737428128462
+status: 3
+tags: []
+user_id: mashhood

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/4ce0d3a542b14851a4645e4926579331/artifacts
+end_time: 1737307146694
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4ce0d3a542b14851a4645e4926579331
+run_name: unruly-seal-357
+run_uuid: 4ce0d3a542b14851a4645e4926579331
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737307145476
+status: 4
+tags: []
+user_id: mashhood

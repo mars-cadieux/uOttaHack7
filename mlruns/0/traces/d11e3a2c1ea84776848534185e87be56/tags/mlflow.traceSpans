@@ -1,0 +1,1 @@
+[{"name": "get_historical_stock_data", "type": "TOOL", "inputs": ["ticker", "start_date", "end_date"]}]

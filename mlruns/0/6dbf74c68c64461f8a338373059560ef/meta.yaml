@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/6dbf74c68c64461f8a338373059560ef/artifacts
+end_time: 1737304621222
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6dbf74c68c64461f8a338373059560ef
+run_name: receptive-duck-186
+run_uuid: 6dbf74c68c64461f8a338373059560ef
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737304620181
+status: 4
+tags: []
+user_id: mashhood

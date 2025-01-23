@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/60c5659a16954876ab6d34f1b871c288/artifacts
+end_time: 1737428339759
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 60c5659a16954876ab6d34f1b871c288
+run_name: agreeable-roo-924
+run_uuid: 60c5659a16954876ab6d34f1b871c288
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737428336810
+status: 3
+tags: []
+user_id: mashhood

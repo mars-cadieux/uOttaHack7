@@ -1,25 +1,30 @@
 import mlflow
-from mlflow.types.llm import (ChatMessage,ChatParams,ChatCompletionResponse,FunctionToolDefinition, ToolDefinition,ToolParamsSchema,ParamProperty)
+from mlflow.types.llm import (ChatMessage, ChatParams, ChatCompletionResponse)
+from mlflow.entities.span import SpanType
 from openai import OpenAI
-from mlflow.models import set_model; import json
+from mlflow.models import set_model
+import json
 import requests
-MODEL = "gemma2-9b-it"
+import json
+
+tools = [{"function": {"name": "get_pokemon_info", "description": "This function takes a Pok\u00e9mon ID as input and returns the Pok\u00e9mon information.\n    \n    ", "parameters": {"properties": {"pokemon_id": {"type": "integer", "description": "The ID of the Pok\u00e9mon."}}, "type": "object"}, "strict": True}, "type": "function"}, {"function": {"name": "get_pokemon_species_info", "description": "This function takes a Pok\u00e9mon species ID as input and returns the Pok\u00e9mon species information.\n    \n    ", "parameters": {"properties": {"pokemon_species_id": {"type": "integer", "description": "The ID of the Pok\u00e9mon species."}}, "type": "object"}, "strict": True}, "type": "function"}, {"function": {"name": "get_pokemon_types", "description": "This function takes a Pok\u00e9mon ID as input and returns the Pok\u00e9mon types.\n    \n    ", "parameters": {"properties": {"pokemon_id": {"type": "integer", "description": "The ID of the Pok\u00e9mon."}}, "type": "object"}, "strict": True}, "type": "function"}]
+functions = ["get_pokemon_info", "get_pokemon_species_info", "get_pokemon_types"]
+MODEL = "llama3-8b-8192"
 
 
 class NewAgent(mlflow.pyfunc.ChatModel):
-    def __init__(self, tools, functions):
+    def __init__(self):
         self.tools = tools
         self.functions = functions
 
     def predict(self, context, messages: list[ChatMessage], params: ChatParams):
         client = OpenAI(
-            api_key="",
+            api_key="YOUR_KEY_HERE",
             base_url="https://api.groq.com/openai/v1",
         )
 
         messages = [m.to_dict() for m in messages]
 
-        print(messages)
         response = client.chat.completions.create(
             model=MODEL,
             messages=messages,
@@ -27,81 +32,74 @@ class NewAgent(mlflow.pyfunc.ChatModel):
         )
 
         tool_calls = response.choices[0].message.tool_calls
-        messages.append(response.choices[0].message)
+
         if tool_calls:
+            messages.append(response.choices[0].message)
             for tool_call in tool_calls:
                 method = getattr(self, tool_call.function.name, None)
-                if tool_call.function.arguments is not dict:
-                    tool_call.function.arguments = json.loads(
-                        tool_call.function.arguments
-                    )
-                print(tool_call.function.arguments)
-                if (
-                    tool_call.function.arguments is None
-                    or "none" in tool_call.function.arguments
-                    or "" in tool_call.function.arguments
-                    or "properties" in tool_call.function.arguments
-                ):
+                args = json.loads(tool_call.function.arguments)
+                if args is None or "none" in args or "" in args or "properties" in args:
                     content = method()
                 else:
-                    content = method(**tool_call.function.arguments)
+                    content = method(**args)
                 tool_response = ChatMessage(
                     role="tool", content=str(content), tool_call_id=tool_call.id
                 ).to_dict()
-                # print(tool_response['content'])
-                # response = {}
-                # response['content'] = tool_response['content']
-                # response['choices'] = [{'message':{}}]
-                # response['choices'][0]['message']['content'] = tool_response['content']
-                # response['choices'][0]['message']['role'] = "assistant"
-        response = client.chat.completions.create(
-            model=MODEL,
-            messages=messages,
-            # tools=self.tools,
-        )
+                messages.append(tool_response)
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=messages,
+                tools=self.tools,
+            )
 
-        return ChatCompletionResponse.from_dict(response)
+        return ChatCompletionResponse.from_dict(response.to_dict())
 
-    def get_random_cat_fact(self):
+    @mlflow.trace(span_type=SpanType.TOOL)
+    def get_pokemon_info(self, pokemon_id):
         """
-        This function takes no input and returns a single random cat fact.
-
-        Returns:
-        dict: A dictionary containing a single random cat fact.
-        """
-        url = "https://catfact.ninja/fact"
-        response = requests.get(url)
-        data = response.json()
-        return data
-
-    def get_multiple_random_cat_facts(self, limit):
-        """
-        This function takes the limit as input and returns multiple random cat facts.
+        This function takes a Pokémon ID as input and returns the Pokémon information.
 
         Parameters:
-        limit (int): The number of facts to return. Defaults to 1, max is 500.
+        pokemon_id (int): The ID of the Pokémon.
 
         Returns:
-        dict: A dictionary containing multiple random cat facts.
+        dict: A dictionary containing the Pokémon information.
         """
-        url = f"https://catfact.ninja/facts?limit={limit}"
+        url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}/"
         response = requests.get(url)
-        data = response.json()
+        data = json.loads(response.text)
         return data
 
-    def get_cat_facts_with_limit(self, limit):
+    @mlflow.trace(span_type=SpanType.TOOL)
+    def get_pokemon_species_info(self, pokemon_species_id):
         """
-        This function takes the limit as input and returns multiple random cat facts with the specified limit.
+        This function takes a Pokémon species ID as input and returns the Pokémon species information.
 
         Parameters:
-        limit (int): The number of facts to return. Defaults to 1, max is 500.
+        pokemon_species_id (int): The ID of the Pokémon species.
 
         Returns:
-        dict: A dictionary containing multiple random cat facts with the specified limit.
+        dict: A dictionary containing the Pokémon species information.
         """
-        url = f"https://catfact.ninja/facts?limit={limit}"
+        url = f"https://pokeapi.co/api/v2/pokemon-species/{pokemon_species_id}/"
         response = requests.get(url)
-        data = response.json()
+        data = json.loads(response.text)
         return data
 
-set_model(NewAgent([{'function': {'name': 'get_random_cat_fact', 'description': 'This function takes no input and returns a single random cat fact.\n    \n    Returns:\n    dict: A dictionary containing a single random cat fact.', 'parameters': {'properties': {}, 'type': 'object'}, 'strict': True}, 'type': 'function'}, {'function': {'name': 'get_multiple_random_cat_facts', 'description': 'This function takes the limit as input and returns multiple random cat facts.\n    \n    ', 'parameters': {'properties': {'limit': {'type': 'integer', 'description': 'The number of facts to return. Defaults to 1, max is 500.'}}, 'type': 'object'}, 'strict': True}, 'type': 'function'}, {'function': {'name': 'get_cat_facts_with_limit', 'description': 'This function takes the limit as input and returns multiple random cat facts with the specified limit.\n    \n    ', 'parameters': {'properties': {'limit': {'type': 'integer', 'description': 'The number of facts to return. Defaults to 1, max is 500.'}}, 'type': 'object'}, 'strict': True}, 'type': 'function'}], ['get_random_cat_fact', 'get_multiple_random_cat_facts', 'get_cat_facts_with_limit']))
+    @mlflow.trace(span_type=SpanType.TOOL)
+    def get_pokemon_types(self, pokemon_id):
+        """
+        This function takes a Pokémon ID as input and returns the Pokémon types.
+
+        Parameters:
+        pokemon_id (int): The ID of the Pokémon.
+
+        Returns:
+        dict: A dictionary containing the Pokémon types.
+        """
+        url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}/types/"
+        response = requests.get(url)
+        data = json.loads(response.text)
+        return data
+
+set_model(NewAgent())

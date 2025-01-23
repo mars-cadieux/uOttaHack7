@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/729b48b8ee3d4784997ede1931925765/artifacts
+end_time: 1737431970157
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 729b48b8ee3d4784997ede1931925765
+run_name: adaptable-dove-332
+run_uuid: 729b48b8ee3d4784997ede1931925765
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737431967119
+status: 3
+tags: []
+user_id: mashhood

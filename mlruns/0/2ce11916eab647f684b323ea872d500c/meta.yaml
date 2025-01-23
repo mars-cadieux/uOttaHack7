@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/2ce11916eab647f684b323ea872d500c/artifacts
+end_time: 1737310162518
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2ce11916eab647f684b323ea872d500c
+run_name: ambitious-sow-627
+run_uuid: 2ce11916eab647f684b323ea872d500c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737310161408
+status: 4
+tags: []
+user_id: mashhood

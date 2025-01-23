@@ -1,0 +1,1 @@
+[{"name": "get_hourly_forecast", "type": "TOOL", "inputs": ["latitude", "longitude"], "outputs": ["time", "temperature_2m", "relativehumidity_2m", "windspeed_10m"]}]

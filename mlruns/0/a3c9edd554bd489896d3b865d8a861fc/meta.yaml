@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/a3c9edd554bd489896d3b865d8a861fc/artifacts
+end_time: 1737308383523
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a3c9edd554bd489896d3b865d8a861fc
+run_name: caring-colt-13
+run_uuid: a3c9edd554bd489896d3b865d8a861fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737308382434
+status: 4
+tags: []
+user_id: mashhood

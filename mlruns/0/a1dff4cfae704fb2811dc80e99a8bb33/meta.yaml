@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/a1dff4cfae704fb2811dc80e99a8bb33/artifacts
+end_time: 1737521493354
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a1dff4cfae704fb2811dc80e99a8bb33
+run_name: treasured-horse-645
+run_uuid: a1dff4cfae704fb2811dc80e99a8bb33
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737521490907
+status: 3
+tags: []
+user_id: mashhood

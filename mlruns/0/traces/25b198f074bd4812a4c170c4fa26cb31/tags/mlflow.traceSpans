@@ -1,0 +1,1 @@
+[{"name": "Completions", "type": "CHAT_MODEL", "inputs": ["model", "messages", "tools"]}]

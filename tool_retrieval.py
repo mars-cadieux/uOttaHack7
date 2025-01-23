@@ -9,8 +9,8 @@ from llm_crawler import CrawlExtract
 
 nest_asyncio.apply()
 
-MODEL = 'llama3-70b-8192'
-client = OpenAI(api_key="",
+MODEL = 'llama3-8b-8192'
+client = OpenAI(api_key="YOUR_KEY_HERE",
                         base_url="https://api.groq.com/openai/v1")
 
 USER_PROMPT = """
@@ -69,6 +69,3 @@ async def createPythonTools(inputURL: str):
 
     return response.choices[0].message.content
  
-
-# if __name__ == "__main__":
-#     asyncio.run(main())

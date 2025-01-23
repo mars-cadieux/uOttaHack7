@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/6f707eb136604c009eed53e3e21a8d0b/artifacts
+end_time: 1737577490528
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6f707eb136604c009eed53e3e21a8d0b
+run_name: unleashed-vole-540
+run_uuid: 6f707eb136604c009eed53e3e21a8d0b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737577487749
+status: 3
+tags: []
+user_id: mashhood

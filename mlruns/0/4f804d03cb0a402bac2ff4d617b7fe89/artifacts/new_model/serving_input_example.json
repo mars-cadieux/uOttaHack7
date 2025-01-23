@@ -1,0 +1,19 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 1.0,
+  "max_tokens": 10,
+  "stop": [
+    "\n"
+  ],
+  "n": 1,
+  "stream": false
+}

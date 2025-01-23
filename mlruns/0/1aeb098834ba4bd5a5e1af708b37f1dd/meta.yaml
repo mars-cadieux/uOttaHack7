@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/1aeb098834ba4bd5a5e1af708b37f1dd/artifacts
+end_time: 1737304635992
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1aeb098834ba4bd5a5e1af708b37f1dd
+run_name: upset-skink-106
+run_uuid: 1aeb098834ba4bd5a5e1af708b37f1dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737304634979
+status: 4
+tags: []
+user_id: mashhood

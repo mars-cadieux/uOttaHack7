@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/1a740430e5ed46b4982e32889aefa8d4/artifacts
+end_time: 1737307164874
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1a740430e5ed46b4982e32889aefa8d4
+run_name: casual-ram-666
+run_uuid: 1a740430e5ed46b4982e32889aefa8d4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737307163705
+status: 4
+tags: []
+user_id: mashhood

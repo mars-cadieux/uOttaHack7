@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/2b31d7f0a7b24a2692575009666a77a9/artifacts
+end_time: 1737577308434
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2b31d7f0a7b24a2692575009666a77a9
+run_name: fearless-colt-323
+run_uuid: 2b31d7f0a7b24a2692575009666a77a9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737577305759
+status: 3
+tags: []
+user_id: mashhood

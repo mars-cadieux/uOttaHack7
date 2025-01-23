@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/40bd05b3080c4c3296b442c290e21fb0/artifacts
+end_time: 1737427483361
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 40bd05b3080c4c3296b442c290e21fb0
+run_name: whimsical-shoat-38
+run_uuid: 40bd05b3080c4c3296b442c290e21fb0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737427479734
+status: 3
+tags: []
+user_id: mashhood

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/mashhood/Documents/Hackathons/UOttahack%207/uOttaHack7/mlruns/0/212a91de02784e73a5565952a350985a/artifacts
+end_time: 1737522636030
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 212a91de02784e73a5565952a350985a
+run_name: delightful-perch-903
+run_uuid: 212a91de02784e73a5565952a350985a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737522633395
+status: 3
+tags: []
+user_id: mashhood
