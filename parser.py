@@ -18,4 +18,3 @@ def parseModelTools(file_content):
     memberFunctions = [{"function_name": match[0], "description": match[1].strip()} for match in matches]
     return (packagesToImport, memberFunctions)
     
-# print(parsePython("demo.py"))

@@ -25,7 +25,7 @@ from black.mode import Mode
 
 from search import getSingleResult
 
-userQuery = "some cat facts"
+userQuery = "pokemon"
 
 def fix_python_indentation(python_string):
     try:
@@ -36,25 +36,23 @@ def fix_python_indentation(python_string):
     except Exception as e:
         raise ValueError(f"Error formatting code: {e}")
     
-
-
 nest_asyncio.apply()
 
-agent_class = """\n\n
-MODEL = "gemma2-9b-it"
+agent_class = """
+
+MODEL = "llama-3.3-70b-versatile"
 
 class NewAgent(mlflow.pyfunc.ChatModel):
-    def __init__(self, tools, functions):
+    def __init__(self):
         self.tools = tools
         self.functions = functions
 
     def predict(self, context, messages: list[ChatMessage], params: ChatParams):
-        client = OpenAI(api_key="your key",
+        client = OpenAI(api_key="YOUR_KEY_HERE",
                         base_url="https://api.groq.com/openai/v1")
 
         messages = [m.to_dict() for m in messages]
 
-        print(messages)
         response = client.chat.completions.create(
             model=MODEL,
             messages=messages,
@@ -62,44 +60,43 @@ class NewAgent(mlflow.pyfunc.ChatModel):
         )
 
         tool_calls = response.choices[0].message.tool_calls
-        messages.append(response.choices[0].message)
+
         if tool_calls:
+            messages.append(response.choices[0].message)
             for tool_call in tool_calls:
                 method = getattr(self, tool_call.function.name, None)
-                if(tool_call.function.arguments is not dict):
-                    tool_call.function.arguments = json.loads(tool_call.function.arguments)
-                print(tool_call.function.arguments)
-                if(tool_call.function.arguments is None or 'none' in tool_call.function.arguments or '' in tool_call.function.arguments or 'properties' in tool_call.function.arguments):
+                args = json.loads(tool_call.function.arguments)
+                if (
+                    args is None
+                    or "none" in args
+                    or "" in args
+                    or "properties" in args
+                ):
                     content=method()
                 else:
-                    content=method(**tool_call.function.arguments)
+                    content=method(**args)
                 tool_response = ChatMessage(
                     role="tool", content=str(content), tool_call_id=tool_call.id
                 ).to_dict()
-                # print(tool_response['content'])
-                # response = {}
-                # response['content'] = tool_response['content']
-                # response['choices'] = [{'message':{}}]
-                # response['choices'][0]['message']['content'] = tool_response['content']
-                # response['choices'][0]['message']['role'] = "assistant"
-        response = client.chat.completions.create(
-            model=MODEL,
-            messages=messages,
-            tools=self.tools,
-        )
+                messages.append(tool_response)
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=messages,
+                tools=self.tools,
+            )
 
-        return ChatCompletionResponse.from_dict(response)
+        return ChatCompletionResponse.from_dict(response.to_dict())
 
 """
 
 
 async def main():
     searchResult = getSingleResult(userQuery)
-    print(searchResult)
     modelResponse = await createPythonTools(searchResult)
     libList, functionsList = parseModelTools(modelResponse)
+    func_def_pattern = r'(?m)^(\s*)def\s+([a-zA-Z_][a-zA-Z_0-9]*)\s*\((.*?)\):'
     type_conversion = {'str': 'string', 'float': 'number', 'int': 'integer', 
-                       'obj': 'object', 'arr': 'array', 'bool': 'boolean'}
+                       'obj': 'object', 'arr': 'array', 'bool': 'boolean', '': 'none'}
     tools = []
     functions = []
     for obj in functionsList:
@@ -108,31 +105,38 @@ async def main():
         param_schema_obj = {}
         if "Parameters:" in params_obj:
             desc, param_str = params_obj.split("Parameters:")
+            if "Returns:" in param_str:
+                param_str, _ = param_str.split("Returns:")
             lines = param_str.split('\n')
             for line in lines:
-                print(line)
                 if(len(line.strip().split(' ')) <= 2):
                     continue
                 word, rest = line.strip().split(' ', 1)
                 keywords = ["Returns:", "list:", "dict:"]
                 if(word not in keywords):
                     type, param_desc = rest.strip().split(' ', 1)
-                    param_schema_obj[word] = ParamProperty(type=type_conversion[type[1:-2]], description=param_desc)
-            new_tool = FunctionToolDefinition(name=obj['function_name'], description=desc, parameters=ToolParamsSchema(param_schema_obj),strict=True)
+                    type_str = type[1:-2]
+                    type_str = type_conversion[type_str] if type_str in type_conversion else "object"
+                    param_schema_obj[word] = ParamProperty(type=type_str, description=param_desc)
+            new_tool = FunctionToolDefinition(name=obj['function_name'], description=desc, parameters=ToolParamsSchema(param_schema_obj), strict=True)
         else:
-            new_tool = FunctionToolDefinition(name=obj['function_name'], description=obj['description'], parameters=ToolParamsSchema({}),strict=True)
+            new_tool = FunctionToolDefinition(name=obj['function_name'], description=obj['description'], parameters=ToolParamsSchema({}), strict=True)
         tools.append(new_tool.to_tool_definition().to_dict())
+    
     _, rest = modelResponse.split("CODE:")
     import_segment, func_segment = rest.split("#$END$")
     func_segment = func_segment
     _, import_segment = import_segment.split("#$START$", 1)
+    def add_line_before(match):
+        indentation = match.group(1)
+        return f"{indentation}@mlflow.trace(span_type=SpanType.TOOL)\n{match.group(0)}"
+    func_segment = re.sub(func_def_pattern, add_line_before, func_segment)
     func_segment = '\t'+ func_segment
     func_segment = func_segment.replace("\n", "\n\t")
     func_segment = func_segment.replace("\t", "    ")
     combined_agent_class = agent_class + func_segment 
-    class_imports = "import mlflow\nfrom mlflow.types.llm import (ChatMessage,ChatParams,ChatCompletionResponse,FunctionToolDefinition, ToolDefinition,ToolParamsSchema,ParamProperty)\n" + \
-                    "from openai import OpenAI\nfrom mlflow.models import set_model; import json"
-    pattern = r'(?m)^(\s*)def\s+([a-zA-Z_][a-zA-Z_0-9]*)\s*\((.*?)\):'
+    class_imports = "import mlflow\nfrom mlflow.types.llm import (ChatMessage, ChatParams, ChatCompletionResponse)\nfrom mlflow.entities.span import SpanType\n" + \
+                    "from openai import OpenAI\nfrom mlflow.models import set_model\nimport json"
     def add_self_to_args(match):
         indentation = match.group(1)  # Leading whitespace
         function_name = match.group(2)
@@ -147,30 +151,32 @@ async def main():
                 new_args = "self"
 
         return f"{indentation}def {function_name}({new_args}):"
-    combined_agent_class = re.sub(pattern, add_self_to_args, combined_agent_class)
+    combined_agent_class = re.sub(func_def_pattern, add_self_to_args, combined_agent_class)
+    tools_string = json.dumps(tools).replace("true", "True").replace("false", "False")
+    functions_string = json.dumps(functions).replace("true", "True").replace("false", "False")
     with open("generated_agent.py", "w") as f:
-        f.write(class_imports+import_segment
-                +fix_python_indentation(combined_agent_class)+f"\nset_model(NewAgent({tools}, {functions}))")
-    system_prompt = {
-        "role": "system",
-        "content": "Please use the provided tools to answer user queries using the provided tools. Be sure to follow the correct syntax when generating tool calls and follow the schema for input when making function calls.",
-    }
-    messages = [
-        system_prompt,
-        {"role": "user", "content": "Tell me " + userQuery},
-    ]
-    input_example = {
-        "messages": messages,
-    }
+        f.write(class_imports+import_segment+f"\ntools = {tools_string}\nfunctions = {functions_string}\n"
+                +fix_python_indentation(combined_agent_class)+f"\nset_model(NewAgent())")
+    # system_prompt = {
+    #     "role": "system",
+    #     "content": "Please use the provided tools to answer user queries.",
+    # }
+    # messages = [
+    #     system_prompt,
+    #     # {"role": "user", "content": "Tell me " + userQuery},
+    #     {"role": "user", "content": "Tell me the weather in Ottawa right now"},
+    # ]
+    # input_example = {
+    #     "messages": messages,
+    # }
     
-    with mlflow.start_run():
-        model_info = mlflow.pyfunc.log_model(
-            artifact_path="new_model",
-            python_model="generated_agent.py",
-            input_example=input_example,
-        )
-
-        model_uri = model_info.model_uri
+    # with mlflow.start_run():
+    #     model_info = mlflow.pyfunc.log_model(
+    #         artifact_path="new_model",
+    #         python_model="generated_agent.py",
+    #         input_example=input_example,
+    #     )
+    #     model_uri = model_info.model_uri
     # tool_model = mlflow.pyfunc.load_model(model_uri)
 
 
